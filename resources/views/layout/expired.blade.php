@@ -1,0 +1,1 @@
+Yetki Yoké
