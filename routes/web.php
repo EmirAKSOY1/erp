@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SuppliersController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\CategoryController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -23,6 +24,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
     Route::resource('supplier', SuppliersController::class);
     Route::resource('customer', CustomerController::class);
+    Route::resource('category', CategoryController::class);
+    Route::get('/category/{parentId}/subcategories', [CategoryController::class, 'getSubcategories']);
 
     
 });

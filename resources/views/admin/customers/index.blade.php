@@ -64,53 +64,56 @@
 @endsection
 @section('js')
 <script>
-   $('.delete-button').on('click', function(e) {
-    e.preventDefault(); 
+    $('.delete-button').on('click', function(e) {
+        e.preventDefault();
 
-    const url = $(this).data('url'); 
+        const url = $(this).data('url');
 
-    Swal.fire({
-        title: 'Silmek istediğinizden emin misiniz?',
-        text: "Bu işlem geri alınamaz!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Evet, sil!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // DELETE isteği gönder
-            $.ajax({
-                url: url,
-                type: 'DELETE',
-                data: {
-                    _token: '{{ csrf_token() }}' // CSRF token gönder
-                },
-                success: function(response) {
-                    // Başarı mesajını göster
-                    Swal.fire(
-                        'Silindi!',
-                        'Müşteri başarıyla silindi.',
-                        'success'
-                    ).then(() => {
-                        location.reload(); // Sayfayı yeniden yükle
-                    });
-                },
-                error: function(xhr) {
-                    // Hata mesajını göster
-                    Swal.fire(
-                        'Hata!',
-                        'Bir hata oluştu: ' + xhr.responseText,
-                        'error'
-                    );
-                }
-            });
-        }
+        Swal.fire({
+            title: 'Silmek istediğinizden emin misiniz?',
+            text: "Bu işlem geri alınamaz!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Evet, sil!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // DELETE isteği gönder
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}' // CSRF token gönder
+                    },
+                    success: function(response) {
+                        // Başarı mesajını göster
+                        Swal.fire(
+                            'Silindi!',
+                            response.success,
+                            'success'
+                        ).then(() => {
+                            location.reload(); // Sayfayı yeniden yükle
+                        });
+                    },
+                    error: function(xhr) {
+                        // Hata mesajını göster
+                        let errorMessage = 'Bir hata oluştu';
+                        if (xhr.responseJSON && xhr.responseJSON.error) {
+                            errorMessage = xhr.responseJSON.error;
+                        }
+                        Swal.fire(
+                            'Hata!',
+                            errorMessage,
+                            'error'
+                        );
+                    }
+                });
+            }
+        });
     });
-});
-
-
 </script>
+
 @endsection
 
 

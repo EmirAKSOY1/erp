@@ -24,7 +24,7 @@
                 <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name') }}" >
 
                 <label for="last_name" class="form-label">TC No</label>
-                <input type="text" class="form-control" id="last_name" name="tc_number " value="{{ old('tc_number ') }}" >
+                <input type="text" class="form-control" id="last_name" name="tc_number" value="{{ old('tc_number') }}" >
             </div>
 
             <!-- Firma Adı ve Resmi Adı -->
@@ -43,6 +43,10 @@
                 <br>
                 <label for="company_full_name" class="form-label">Yetkili Kişi</label>
                 <input type="text" class="form-control" id="company_full_name" name="contact_person" value="{{ old('contact_person') }}">
+            </div>
+            <div class="mb-3">
+                <label for="country" class="form-label">Banka</label>
+                <input type="text" class="form-control" id="country" name="bank_name" value="{{ old('bank_name') }}" required>
             </div>
             <div class="mb-3">
                 <label for="country" class="form-label">IBAN</label>

@@ -200,7 +200,7 @@
 }
 
 .loader-chicken {
-    width: 100px; /* Resmin boyutu */
+    width: 200px; /* Resmin boyutu */
     height: 100px;
     animation: spin 2s linear infinite; /* Döndürme animasyonu */
 }
@@ -226,9 +226,9 @@ li{
 
 <body >
     
-    <div id="loader" class="loader-overlay">
-        <img src="{{ asset('storage/images/preview.png') }}" class="loader-chicken" alt="Yükleniyor..." >
-    </div>
+    {{-- <div id="loader" class="loader-overlay">
+        <img src="{{ asset('storage/images/logo.jpg') }}" class="loader-chicken" alt="Yükleniyor..." >
+    </div> --}}
 
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -301,7 +301,7 @@ li{
                         <ul class="menu-sub">
                   
                           <li class="menu-item">
-                            <a href="layouts-without-menu.html" class="menu-link">
+                            <a href="{{route('category.index')}}" class="menu-link">
                               <div class="text-truncate" data-i18n="Without menu">Kategoriler</div>
                             </a>
                           </li>
@@ -701,11 +701,7 @@ li{
         }
     });
 </script>
-<script>
-        window.addEventListener('load', function () {
-            document.getElementById('loader').style.display = 'none';
-        });
-</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.4/dist/sweetalert2.all.min.js"></script>
 

@@ -21,7 +21,7 @@ class Customer extends Model
         'customer_type', 
         'contact_person', 
         'vkn', 
-        'note', 
+        'notes', 
         'iban',
         'status'
     ];
