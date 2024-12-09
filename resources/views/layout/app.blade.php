@@ -337,7 +337,7 @@ li{
                             </a>
                           </li>
                           <li class="menu-item">
-                            <a href="layouts-without-navbar.html" class="menu-link">
+                            <a href="{{route('customer.index')}}" class="menu-link">
                               <div class="text-truncate" data-i18n="Without navbar">Müşteriler</div>
                             </a>
                           </li>
@@ -393,7 +393,7 @@ li{
                     </div>
                 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <h3>Mercan Takip Otomasyonu</h3>
+                        <h3>Endkon Muhasebe</h3>
                       <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item lh-1 me-4">
                           <span></span>

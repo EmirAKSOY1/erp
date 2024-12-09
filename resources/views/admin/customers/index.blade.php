@@ -1,7 +1,6 @@
 @extends('layout.app')
-@section('title', 'Tedarikçiler') 
-@section('page', 'Entegreler') 
-@section('detail', 'Aktif Veri Gelen Entegreler') 
+@section('title', 'Müşteriler') 
+
 @section('css')
 <style>
 
@@ -22,39 +21,44 @@
 @endsection
 @section('content') 
 <div class="container">
-<button type="button"  onclick="window.location='{{ route('supplier.create') }}'" class="btn btn-success">Yeni Tedarikçi Ekle</button>
+<button type="button"  onclick="window.location='{{ route('customer.create') }}'" class="btn btn-success">Yeni Müşteri Ekle</button>
 	<div class="row">
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col"></th>
-                <th scope="col">Tedarikçi Adı</th>
-                <th scope="col">Tedarikçi Tam Adı</th>
-                <th scope="col">Tedarikçi Yetkilisi</th>
+                <th scope="col">Müşteri No</th>
+                <th scope="col">Müşteri Tipi</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Tam Adı(Soyad)</th>
                 <th scope="col">Durum</th>
                 <th scope="col">İşlemler</th>
             </tr>
             </thead>
             <tbody>
-                @foreach ($suppliers as $supplier)
+                @foreach ($customers as $customer)
                 <tr>
-                    <th><img src="{{ $supplier->company_logo ? asset('uploads/suppliers/' . $supplier->company_logo) : asset('uploads/suppliers/supplier.png') }}" alt="Logo" width="50rem"></th>
-                    <th>{{ $supplier->company_name }}</th>
-                    <th>{{ $supplier->company_full_name }}</th>
-                    <th>{{ $supplier->contact_person }}</th>
-                    <th>{{ $supplier->status ==='active' ? 'Aktif' :'Pasif' }}</th>
+                    <th>{{ $customer->id }}</th>
+                    <th>{{ $customer->customer_type === 'individual' ? 'Bireysel' : 'Şirket' }}</th>
+                    @if($customer->customer_type =='individual')
+                        <th>{{ $customer->first_name }}</th>
+                        <th>{{ $customer->last_name }}</th>
+                    @else
+                        <th>{{ $customer->company_name }}</th>
+                        <th>{{ $customer->company_full_name }}</th>
+                    @endif
+                    <th>{{ $customer->status ==='active' ? 'Aktif' :'Pasif' }}</th>
                     <th>
-                        <button type="button" class="btn" onclick="window.location='{{ route('supplier.show', $supplier->id) }}'"><i class="fa-solid fa-eye"></i></button> 
-                        <button type="button" class="btn" onclick="window.location='{{ route('supplier.edit', $supplier->id) }}'"><i class="fa-solid fa-pen-to-square"></i></button> 
-                        <button type="button" class="btn delete-button" data-url="{{ route('supplier.destroy', $supplier->id) }}"><i class="fa-solid fa-trash"></i> Sil</button>
+                        <button type="button" class="btn" onclick="window.location='{{ route('customer.show', $customer->id) }}'"><i class="fa-solid fa-eye"></i></button> 
+                        <button type="button" class="btn" onclick="window.location='{{ route('customer.edit', $customer->id) }}'"><i class="fa-solid fa-pen-to-square"></i></button> 
+                        <button type="button" class="btn delete-button" data-url="{{ route('customer.destroy', $customer->id) }}"><i class="fa-solid fa-trash"></i> Sil</button>
                     </th>
                 </tr>
-        @endforeach
+                @endforeach
         </tbody>
     </table>
 	</div>
     <div class="pagination-wrapper">
-    {{ $suppliers->links('pagination::bootstrap-4') }}
+    {{-- {{ $suppliers->links('pagination::bootstrap-4') }} --}}
 </div>
 </div>
 @endsection
@@ -86,7 +90,7 @@
                     // Başarı mesajını göster
                     Swal.fire(
                         'Silindi!',
-                        'Tedarikçi başarıyla silindi.',
+                        'Müşteri başarıyla silindi.',
                         'success'
                     ).then(() => {
                         location.reload(); // Sayfayı yeniden yükle
