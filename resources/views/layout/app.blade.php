@@ -316,7 +316,7 @@ li{
                             </a>
                           </li>
                           <li class="menu-item">
-                            <a href="layouts-container.html" class="menu-link">
+                            <a href="{{route('supplier.index')}}" class="menu-link">
                               <div class="text-truncate" data-i18n="Container">Tedarikçiler</div>
                             </a>
                           </li>

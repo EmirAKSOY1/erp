@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\SuppliersController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -19,5 +20,9 @@ Route::get('/expired', function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
+    Route::resource('supplier', SuppliersController::class);
+
     
 });
+
+
