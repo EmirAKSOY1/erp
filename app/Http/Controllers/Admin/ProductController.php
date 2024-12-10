@@ -13,8 +13,11 @@ use App\Exports\ProductExport;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::paginate(10);
+        $products = Product::paginate(8);
         return view("admin.products.index",compact("products"));
+    }
+    public function show($id){
+        
     }
     public function create(){
         $categories = Category::all();

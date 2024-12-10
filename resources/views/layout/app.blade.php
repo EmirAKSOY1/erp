@@ -382,6 +382,13 @@ li{
                         </ul>
                       </li>
                       <br>
+                      <li class="menu-item">
+                        <a href="{{route('admin_dashboard')}}" class="menu-link">
+                          <i class="menu-icon fa-solid fa-users"></i>
+                          <div data-i18n="Analytics">Kullanıcı Yönetimi</div>
+                        </a>
+                      </li>
+                      <br>
                       <li class="menu-item" style="">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon fa-solid fa-gear"></i>
@@ -393,6 +400,11 @@ li{
                           <li class="menu-item">
                             <a href="{{route('currency.index')}}" class="menu-link">
                               <div class="text-truncate" data-i18n="Without menu">Para Birimleri</div>
+                            </a>
+                          </li>
+                          <li class="menu-item">
+                            <a href="{{route('currency.index')}}" class="menu-link">
+                              <div class="text-truncate" data-i18n="Without menu">Sabitler</div>
                             </a>
                           </li>
                         </ul>

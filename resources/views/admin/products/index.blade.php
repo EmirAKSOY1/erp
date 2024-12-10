@@ -7,7 +7,9 @@
         Excel ile Ürün Yükle
     </button>
     <button type="button" onclick="window.location='{{ route('products.export') }}'" class="btn btn-warning" >Excel Dışarı Aktar</button>
-    
+    <br>
+    <br>
+    <br>
         <div class="row">
             <table class="table table-striped">
                 <thead>
@@ -31,7 +33,7 @@
                         <th>{{ $product->sale_price }} {{ $product->currency->abbreviation }}</th>
                         <th>{{ $product->category->name }}</th>
                         <th>
-                            <button type="button" class="btn" onclick="window.location='{{ route('products.show', $product->id) }}'"><i class="fa-solid fa-eye"></i></button> 
+                            {{-- <button type="button" class="btn" onclick="window.location='{{ route('products.show', $product->id) }}'"><i class="fa-solid fa-eye"></i></button>  --}}
                             <button type="button" class="btn" onclick="window.location='{{ route('products.edit', $product->id) }}'"><i class="fa-solid fa-pen-to-square"></i></button> 
                             <button type="button" class="btn delete-button" data-url="{{ route('products.destroy', $product->id) }}"><i class="fa-solid fa-trash"></i> Sil</button>
                         </th>
