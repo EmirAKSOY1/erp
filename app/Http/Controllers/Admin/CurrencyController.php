@@ -42,4 +42,37 @@ class CurrencyController extends Controller
 
         return response()->json(['success' => 'Para birimi başarıyla silindi.']);
     }
+    public function edit($id)
+    {
+        // Veritabanından ilgili para birimini al
+        $currency = Currency::findOrFail($id);
+
+        // Para birimi verisini döndür (ajax ile modal açılacak)
+        return response()->json($currency);
+    }
+    public function update(Request $request, $id)
+    {
+        // Validasyon
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'symbol' => 'required|string|max:10',
+            'abbreviation' => 'required|string|max:5',
+            'rate' => 'required|numeric',
+        ]);
+
+        // Veritabanından ilgili para birimini al
+        $currency = Currency::findOrFail($id);
+
+        // Para birimi verilerini güncelle
+        $currency->name = $request->name;
+        $currency->symbol = $request->symbol;
+        $currency->abbreviation = $request->abbreviation;
+        $currency->rate = $request->rate;
+
+        // Güncellenmiş veriyi kaydet
+        $currency->save();
+
+        // Başarı mesajı ile geri yönlendir
+        return response()->json(['success' => 'Para birimi başarıyla güncellendi!']);
+    }
 }

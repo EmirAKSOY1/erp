@@ -306,7 +306,7 @@ li{
                             </a>
                           </li>
                           <li class="menu-item">
-                            <a href="layouts-without-navbar.html" class="menu-link">
+                            <a href="{{route('products.index')}}" class="menu-link">
                               <div class="text-truncate" data-i18n="Without navbar">Ürünler</div>
                             </a>
                           </li>

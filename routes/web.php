@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SuppliersController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CurrencyController;
+use App\Http\Controllers\Admin\ProductController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -30,7 +31,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/category/{parentId}/subcategories', [CategoryController::class, 'getSubcategories']);
     Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
-
+    Route::resource('products', ProductController::class);
+    Route::post('products/import', [ProductController::class, 'import'])->name('products.import');
+    Route::get('products/export', [ProductController::class, 'export'])->name('products.export');
     
 });
 
