@@ -381,6 +381,22 @@ li{
                           </li>
                         </ul>
                       </li>
+                      <br>
+                      <li class="menu-item" style="">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon fa-solid fa-gear"></i>
+                          <div class="text-truncate" data-i18n="Layouts">Ayarlar</div>
+                        </a>
+                  
+                        <ul class="menu-sub">
+                  
+                          <li class="menu-item">
+                            <a href="{{route('currency.index')}}" class="menu-link">
+                              <div class="text-truncate" data-i18n="Without menu">Para Birimleri</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
                 </ul>
               </aside>
               <div class="layout-page">
